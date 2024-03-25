@@ -1,11 +1,12 @@
+com\sale\model\service\DemoApplication.class
+com\sale\model\service\ProductService.class
+com\sale\model\entity\Customer.class
+com\sale\model\repository\OrderDB.class
+com\sale\model\repository\ProductDB.class
 com\sale\model\resources\ProductREST.class
 com\sale\model\resources\OrderREST.class
-com\sale\model\service\DemoApplication.class
 com\sale\model\entity\Payment.class
 com\sale\model\service\OrderService.class
-com\sale\model\service\ProductService.class
-com\sale\model\repository\InsertProduct.class
 com\sale\model\entity\Order.class
 com\sale\model\entity\User.class
-com\sale\model\entity\Customer.class
 com\sale\model\entity\Product.class

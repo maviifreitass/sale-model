@@ -30,6 +30,10 @@ public class Product {
         this.value = value;
 
     }
+    
+    public Product(){
+        
+    }
 
     public Long getId() {
         return id;
@@ -55,4 +59,10 @@ public class Product {
         this.value = value;
     }
 
+    @Override
+    public String toString() {
+        return "Product{" + "id=" + id + ", name=" + name + ", value=" + value + '}';
+    }
+
+    
 }

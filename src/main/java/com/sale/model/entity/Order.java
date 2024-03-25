@@ -18,12 +18,6 @@ public class Order {
     @JsonProperty("id")
     private Long id;
 
-    @JsonProperty("create_date")
-    private String createDate;
-
-    @JsonProperty("shipment")
-    private String shipment;
-
     @JsonProperty("total")
     private String total;
 
@@ -36,8 +30,11 @@ public class Order {
     @JsonProperty("payment")
     private Payment payment;
 
-    @JsonProperty("tranche")
-    private Integer tranche;
+    @JsonProperty("quota")
+    private Integer quota;
+
+    @JsonProperty("quotaValue")
+    private Integer quotaValue;
 
     public Long getId() {
         return id;
@@ -45,22 +42,6 @@ public class Order {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getCreateDate() {
-        return createDate;
-    }
-
-    public void setCreateDate(String createDate) {
-        this.createDate = createDate;
-    }
-
-    public String getShipment() {
-        return shipment;
-    }
-
-    public void setShipment(String shipment) {
-        this.shipment = shipment;
     }
 
     public String getTotal() {
@@ -93,6 +74,22 @@ public class Order {
 
     public void setPayment(Payment payment) {
         this.payment = payment;
+    }
+
+    public Integer getQuota() {
+        return quota;
+    }
+
+    public void setQuota(Integer quota) {
+        this.quota = quota;
+    }
+
+    public Integer getQuotaValue() {
+        return quotaValue;
+    }
+
+    public void setQuotaValue(Integer quotaValue) {
+        this.quotaValue = quotaValue;
     }
 
 }
