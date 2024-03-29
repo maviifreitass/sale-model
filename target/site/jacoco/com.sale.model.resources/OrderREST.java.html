@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>OrderREST.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sale-model</a> &gt; <a href="index.source.html" class="el_package">com.sale.model.resources</a> &gt; <span class="el_source">OrderREST.java</span></div><h1>OrderREST.java</h1><pre class="source lang-java linenums">package com.sale.model.resources;
+
+import com.sale.model.entity.Order;
+import com.sale.model.entity.Payment;
+import com.sale.model.repository.OrderDB;
+import jakarta.inject.Inject;
+import jakarta.ws.rs.GET;
+import jakarta.ws.rs.Path;
+import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.core.MediaType;
+import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Context;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.POST;
+import jakarta.ws.rs.PathParam;
+import java.util.List;
+
+@Path(&quot;/order&quot;)
+<span class="nc" id="L20">public class OrderREST {</span>
+
+    @Inject
+    private OrderDB orderDB;
+
+    @POST
+    @Path(&quot;/create&quot;)
+    @Produces(MediaType.APPLICATION_JSON)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public Response create(@Context HttpServletRequest request, Order order) {
+<span class="nc bnc" id="L30" title="All 4 branches missed.">        if (order.getProducts() == null || order.getProducts().isEmpty()) {</span>
+<span class="nc" id="L31">            return Response.status(Response.Status.BAD_REQUEST).entity(&quot;Produtos não informados&quot;).build();</span>
+        }
+
+<span class="nc bnc" id="L34" title="All 6 branches missed.">        if (!order.getPayment().equals(Payment.CREDIT) &amp;&amp; (order.getQuota() != null || order.getQuotaValue() != null)) {</span>
+<span class="nc" id="L35">            return Response.status(Response.Status.BAD_REQUEST).entity(&quot;Parcelas são permitidas apenas para pagamento no crédito&quot;).build();</span>
+        }
+
+<span class="nc bnc" id="L38" title="All 2 branches missed.">        if (order.getPayment().equals(Payment.CREDIT)) {</span>
+<span class="nc bnc" id="L39" title="All 4 branches missed.">            if (order.getQuota() == null || order.getQuota() == 0) {</span>
+<span class="nc" id="L40">                return Response.status(Response.Status.BAD_REQUEST).entity(&quot;Parcela não informada&quot;).build();</span>
+<span class="nc bnc" id="L41" title="All 2 branches missed.">            } else if (order.getQuotaValue() &lt;= 20) {</span>
+<span class="nc" id="L42">                return Response.status(Response.Status.BAD_REQUEST).entity(&quot;Parcela não pode ser igual ou inferior a R$ 20,00&quot;).build();</span>
+            }
+        }
+
+<span class="nc" id="L46">        order.setId(Long.valueOf(OrderDB.getInstance().getOrderList().size() + 1));</span>
+<span class="nc" id="L47">        OrderDB.getInstance().getOrderList().add(order);</span>
+<span class="nc" id="L48">        return Response.status(Response.Status.CREATED)</span>
+<span class="nc" id="L49">                .entity(order)</span>
+<span class="nc" id="L50">                .build();</span>
+    }
+
+    @GET
+    @Path(&quot;/{id}&quot;)
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response getById(@PathParam(&quot;id&quot;) int id, @Context HttpServletRequest request) {
+<span class="nc" id="L57">        List&lt;Order&gt; orders = OrderDB.getInstance().getOrderList();</span>
+
+<span class="nc" id="L59">        return Response.ok(orders).build();</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
