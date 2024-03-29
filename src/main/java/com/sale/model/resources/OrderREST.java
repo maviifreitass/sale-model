@@ -31,7 +31,7 @@ public class OrderREST {
             return Response.status(Response.Status.BAD_REQUEST).entity("Produtos não informados").build();
         }
 
-        if (!order.getPayment().equals(Payment.CREDIT) && (order.getQuota() != null || order.getQuotaValue() != null)) {
+        if (!order.getPayment().equals(Payment.CREDIT) && (order.getQuota() != null || order.getQuotaValue() != 0)) {
             return Response.status(Response.Status.BAD_REQUEST).entity("Parcelas são permitidas apenas para pagamento no crédito").build();
         }
 

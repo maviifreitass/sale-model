@@ -6,6 +6,7 @@ package com.sale.model.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -34,7 +35,7 @@ public class Order {
     private Integer quota;
 
     @JsonProperty("quotaValue")
-    private Integer quotaValue;
+    private double quotaValue;
 
     public Long getId() {
         return id;
@@ -67,6 +68,13 @@ public class Order {
     public void setProducts(List<Product> products) {
         this.products = products;
     }
+    // Método para adicionar um produto
+    public void addProduct(Product product) {
+        if (products == null) {
+            products = new ArrayList<>();
+        }
+        products.add(product);
+    }
 
     public Payment getPayment() {
         return payment;
@@ -84,11 +92,11 @@ public class Order {
         this.quota = quota;
     }
 
-    public Integer getQuotaValue() {
+    public double getQuotaValue() {
         return quotaValue;
     }
 
-    public void setQuotaValue(Integer quotaValue) {
+    public void setQuotaValue(double quotaValue) {
         this.quotaValue = quotaValue;
     }
 
