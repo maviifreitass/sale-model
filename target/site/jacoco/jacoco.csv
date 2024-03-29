@@ -1,0 +1,13 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+sale-model,com.sale.model.entity,Product,58,0,0,0,17,0,9,0,9,0
+sale-model,com.sale.model.entity,Customer,17,0,0,0,7,0,5,0,5,0
+sale-model,com.sale.model.entity,User,17,0,0,0,7,0,5,0,5,0
+sale-model,com.sale.model.entity,Order,52,0,0,0,22,0,15,0,15,0
+sale-model,com.sale.model.entity,Payment,34,0,0,0,4,0,1,0,1,0
+sale-model,com.sale.model.repository,ProductDB,51,0,2,0,13,0,5,0,4,0
+sale-model,com.sale.model.repository,OrderDB,23,0,2,0,9,0,5,0,4,0
+sale-model,com.sale.model.service,OrderService,3,0,0,0,1,0,1,0,1,0
+sale-model,com.sale.model.service,DemoApplication,3,0,0,0,1,0,1,0,1,0
+sale-model,com.sale.model.service,ProductService,3,0,0,0,1,0,1,0,1,0
+sale-model,com.sale.model.resources,OrderREST,89,0,18,0,17,0,12,0,3,0
+sale-model,com.sale.model.resources,ProductREST,154,0,20,0,43,0,15,0,5,0

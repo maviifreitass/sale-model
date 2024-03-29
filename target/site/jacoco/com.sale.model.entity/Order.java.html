@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Order.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">sale-model</a> &gt; <a href="index.source.html" class="el_package">com.sale.model.entity</a> &gt; <span class="el_source">Order.java</span></div><h1>Order.java</h1><pre class="source lang-java linenums">/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
+package com.sale.model.entity;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.List;
+
+/**
+ *
+ * @author maria
+ */
+@JsonIgnoreProperties(ignoreUnknown = true)
+<span class="nc" id="L16">public class Order {</span>
+
+    @JsonProperty(&quot;id&quot;)
+    private Long id;
+
+    @JsonProperty(&quot;total&quot;)
+    private String total;
+
+    @JsonProperty(&quot;customer&quot;)
+    private Customer customer;
+
+    @JsonProperty(&quot;products&quot;)
+    private List&lt;Product&gt; products;
+
+    @JsonProperty(&quot;payment&quot;)
+    private Payment payment;
+
+    @JsonProperty(&quot;quota&quot;)
+    private Integer quota;
+
+    @JsonProperty(&quot;quotaValue&quot;)
+    private Integer quotaValue;
+
+    public Long getId() {
+<span class="nc" id="L40">        return id;</span>
+    }
+
+    public void setId(Long id) {
+<span class="nc" id="L44">        this.id = id;</span>
+<span class="nc" id="L45">    }</span>
+
+    public String getTotal() {
+<span class="nc" id="L48">        return total;</span>
+    }
+
+    public void setTotal(String total) {
+<span class="nc" id="L52">        this.total = total;</span>
+<span class="nc" id="L53">    }</span>
+
+    public Customer getCustomer() {
+<span class="nc" id="L56">        return customer;</span>
+    }
+
+    public void setCustomer(Customer customer) {
+<span class="nc" id="L60">        this.customer = customer;</span>
+<span class="nc" id="L61">    }</span>
+
+    public List&lt;Product&gt; getProducts() {
+<span class="nc" id="L64">        return products;</span>
+    }
+
+    public void setProducts(List&lt;Product&gt; products) {
+<span class="nc" id="L68">        this.products = products;</span>
+<span class="nc" id="L69">    }</span>
+
+    public Payment getPayment() {
+<span class="nc" id="L72">        return payment;</span>
+    }
+
+    public void setPayment(Payment payment) {
+<span class="nc" id="L76">        this.payment = payment;</span>
+<span class="nc" id="L77">    }</span>
+
+    public Integer getQuota() {
+<span class="nc" id="L80">        return quota;</span>
+    }
+
+    public void setQuota(Integer quota) {
+<span class="nc" id="L84">        this.quota = quota;</span>
+<span class="nc" id="L85">    }</span>
+
+    public Integer getQuotaValue() {
+<span class="nc" id="L88">        return quotaValue;</span>
+    }
+
+    public void setQuotaValue(Integer quotaValue) {
+<span class="nc" id="L92">        this.quotaValue = quotaValue;</span>
+<span class="nc" id="L93">    }</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
