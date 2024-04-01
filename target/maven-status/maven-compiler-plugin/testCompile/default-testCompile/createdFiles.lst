@@ -1,3 +1,5 @@
-com\sale\model\tests\entity\Product.class
-com\sale\model\tests\TestSale.class
 com\sale\model\tests\entity\Order.class
+com\sale\model\tests\entity\Product.class
+com\sale\model\tests\OrderSale.class
+com\sale\model\tests\ProductSale.class
+com\sale\model\tests\entity\Payment.class
