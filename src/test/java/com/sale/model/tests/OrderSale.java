@@ -4,9 +4,9 @@ package com.sale.model.tests;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
-import com.sale.model.entity.Order;
-import com.sale.model.entity.Payment;
-import com.sale.model.entity.Product;
+import com.sale.model.tests.entity.Order;
+import com.sale.model.tests.entity.Payment;
+import com.sale.model.tests.entity.Product;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -15,17 +15,19 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.Mock;
 
 /**
  *
  * @author maria
  */
-public class TestSale {
+public class OrderSale {
 
+    @Mock
     private Order order;
     private List<Product> listaTeste;
 
-    public TestSale() {
+    public OrderSale() {
 
         this.listaTeste = new ArrayList<Product>();
         // Criando produtos

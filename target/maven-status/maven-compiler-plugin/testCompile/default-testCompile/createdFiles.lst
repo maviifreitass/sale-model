@@ -1,1 +1,3 @@
+com\sale\model\tests\entity\Product.class
 com\sale\model\tests\TestSale.class
+com\sale\model\tests\entity\Order.class
