@@ -31,7 +31,7 @@ import java.util.List;
 <span class="nc" id="L31">            return Response.status(Response.Status.BAD_REQUEST).entity(&quot;Produtos não informados&quot;).build();</span>
         }
 
-<span class="nc bnc" id="L34" title="All 6 branches missed.">        if (!order.getPayment().equals(Payment.CREDIT) &amp;&amp; (order.getQuota() != null || order.getQuotaValue() != null)) {</span>
+<span class="nc bnc" id="L34" title="All 6 branches missed.">        if (!order.getPayment().equals(Payment.CREDIT) &amp;&amp; (order.getQuota() != null || order.getQuotaValue() != 0)) {</span>
 <span class="nc" id="L35">            return Response.status(Response.Status.BAD_REQUEST).entity(&quot;Parcelas são permitidas apenas para pagamento no crédito&quot;).build();</span>
         }
 
@@ -51,7 +51,7 @@ import java.util.List;
     }
 
     @GET
-    @Path(&quot;/{id}&quot;)
+    @Path(&quot;&quot;)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getById(@PathParam(&quot;id&quot;) int id, @Context HttpServletRequest request) {
 <span class="nc" id="L57">        List&lt;Order&gt; orders = OrderDB.getInstance().getOrderList();</span>

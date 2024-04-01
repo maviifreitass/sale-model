@@ -66,8 +66,9 @@ import java.util.List;
 <span class="nc" id="L66">            productToUpdate.setValue(updatedProduct.getValue());</span>
         }
 
-<span class="nc" id="L69">        return Response.ok(productToUpdate)</span>
-<span class="nc" id="L70">                .build();</span>
+<span class="nc" id="L69">         return Response.status(Response.Status.CREATED)</span>
+<span class="nc" id="L70">                .entity(productToUpdate)</span>
+<span class="nc" id="L71">                .build();</span>
     }
 
     @POST
@@ -75,19 +76,19 @@ import java.util.List;
     @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
     public Response create(@Context HttpServletRequest request, Product product) {
-<span class="nc bnc" id="L78" title="All 2 branches missed.">        if (product.getName() == null) {</span>
-<span class="nc" id="L79">            return Response.status(Response.Status.BAD_REQUEST).entity(&quot;Nome não informado&quot;).build();</span>
+<span class="nc bnc" id="L79" title="All 2 branches missed.">        if (product.getName() == null) {</span>
+<span class="nc" id="L80">            return Response.status(Response.Status.BAD_REQUEST).entity(&quot;Nome não informado&quot;).build();</span>
         }
-<span class="nc bnc" id="L81" title="All 2 branches missed.">        if (product.getValue() == null) {</span>
-<span class="nc" id="L82">            return Response.status(Response.Status.BAD_REQUEST).entity(&quot;Valor não informado&quot;).build();</span>
+<span class="nc bnc" id="L82" title="All 2 branches missed.">        if (product.getValue() == null) {</span>
+<span class="nc" id="L83">            return Response.status(Response.Status.BAD_REQUEST).entity(&quot;Valor não informado&quot;).build();</span>
         }
 
-<span class="nc" id="L85">        product.setId(Long.valueOf(productDB.getInstance().getProductList().size() + 1));</span>
-<span class="nc" id="L86">        productDB.getInstance().getProductList().add(product);</span>
+<span class="nc" id="L86">        product.setId(Long.valueOf(productDB.getInstance().getProductList().size() + 1));</span>
+<span class="nc" id="L87">        productDB.getInstance().getProductList().add(product);</span>
 
-<span class="nc" id="L88">        return Response.status(Response.Status.CREATED)</span>
-<span class="nc" id="L89">                .entity(product)</span>
-<span class="nc" id="L90">                .build();</span>
+<span class="nc" id="L89">        return Response.status(Response.Status.CREATED)</span>
+<span class="nc" id="L90">                .entity(product)</span>
+<span class="nc" id="L91">                .build();</span>
     }
 
     @DELETE
@@ -95,20 +96,20 @@ import java.util.List;
     @Produces(MediaType.APPLICATION_JSON)
     public Response deleteById(@PathParam(&quot;id&quot;) int id, @Context HttpServletRequest request) {
         try {
-<span class="nc" id="L98">            productDB.getInstance().getProductList().remove(id);</span>
-<span class="nc" id="L99">        } catch (IndexOutOfBoundsException e) {</span>
-<span class="nc" id="L100">            return Response.status(Response.Status.BAD_REQUEST).entity(&quot;Id inexistente&quot;).build();</span>
-<span class="nc" id="L101">        }</span>
+<span class="nc" id="L99">            productDB.getInstance().getProductList().remove(id);</span>
+<span class="nc" id="L100">        } catch (IndexOutOfBoundsException e) {</span>
+<span class="nc" id="L101">            return Response.status(Response.Status.BAD_REQUEST).entity(&quot;Id inexistente&quot;).build();</span>
+<span class="nc" id="L102">        }</span>
 
-<span class="nc" id="L103">        return Response.noContent().build();</span>
+<span class="nc" id="L104">        return Response.noContent().build();</span>
     }
 
     @GET
-    @Path(&quot;/{id}&quot;)
+    @Path(&quot;&quot;)
     @Produces(MediaType.APPLICATION_JSON)
     public Response getById(@PathParam(&quot;id&quot;) int id, @Context HttpServletRequest request) {
-<span class="nc" id="L110">        List&lt;Product&gt; productList = productDB.getInstance().getProductList();</span>
-<span class="nc" id="L111">        return Response.ok(productList).build();</span>
+<span class="nc" id="L111">        List&lt;Product&gt; productList = productDB.getInstance().getProductList();</span>
+<span class="nc" id="L112">        return Response.ok(productList).build();</span>
     }
 
 }

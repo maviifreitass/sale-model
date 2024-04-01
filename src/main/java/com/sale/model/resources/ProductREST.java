@@ -66,7 +66,8 @@ public class ProductREST {
             productToUpdate.setValue(updatedProduct.getValue());
         }
 
-        return Response.ok(productToUpdate)
+         return Response.status(Response.Status.CREATED)
+                .entity(productToUpdate)
                 .build();
     }
 
@@ -104,7 +105,7 @@ public class ProductREST {
     }
 
     @GET
-    @Path("/{id}")
+    @Path("")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getById(@PathParam("id") int id, @Context HttpServletRequest request) {
         List<Product> productList = productDB.getInstance().getProductList();

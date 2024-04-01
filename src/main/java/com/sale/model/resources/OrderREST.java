@@ -51,7 +51,7 @@ public class OrderREST {
     }
 
     @GET
-    @Path("/{id}")
+    @Path("")
     @Produces(MediaType.APPLICATION_JSON)
     public Response getById(@PathParam("id") int id, @Context HttpServletRequest request) {
         List<Order> orders = OrderDB.getInstance().getOrderList();
