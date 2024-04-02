@@ -18,7 +18,6 @@ public class Product {
         this.id = id;
         this.name = name;
         this.value = value;
-
     }
 
     public Product() {

@@ -5,16 +5,16 @@ package com.sale.model.tests;
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
 import com.sale.model.tests.entity.Order;
-import com.sale.model.tests.entity.Payment;
 import com.sale.model.tests.entity.Product;
+import com.sale.model.tests.entity.ProductDB;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
-import static org.junit.jupiter.api.Assertions.assertNull;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 
 /**
@@ -22,6 +22,9 @@ import org.mockito.Mock;
  * @author maria
  */
 public class ProductSale {
+
+    @InjectMocks
+    private ProductDB productDB;
 
     @Mock
     private Order order;
@@ -57,78 +60,60 @@ public class ProductSale {
     public void setUp() {
         this.order = new Order();
     }
-
+/*
     @Test
-    public void testNaoPermiteRegistrarPagamentoCarrinhoVazio() {
-        //adding products
-        this.order.addProduct(this.listaTeste.get(0));
-        //seting payment
-        this.order.setPayment(Payment.CREDIT);
-        //checking condicions
-        assertNotNull(this.order.getProducts(), "failure - Order's products can not be null");
-        boolean test = (this.order.getProducts().isEmpty() ? false : true);
-        assertTrue(test, "failure - Order's products can not be null");
-    }
-
-    @Test
-    public void testNaoPermiteParcelasIgualOuInferiorA20() {
-        //adding order's products
-        this.order.addProduct(this.listaTeste.get(0));
-        this.order.addProduct(this.listaTeste.get(1));
-        this.order.addProduct(this.listaTeste.get(2));
-        //seting payments 
-        this.order.setPayment(Payment.CREDIT);
-        this.order.setQuota(2);
-        this.order.setQuotaValue(30);
-        //checking condicions
-        assertEquals(30, this.order.getQuotaValue(), "failure - Order's quota can't coust less or R$:20.00");
-    }
-
-    @Test
-    public void testNaoPermiteParcelasAoSelecionarCredito() {
-        //adding order's products
-        this.order.addProduct(this.listaTeste.get(0));
-        this.order.addProduct(this.listaTeste.get(1));
-        this.order.addProduct(this.listaTeste.get(2));
-        this.order.setPayment(Payment.CREDIT);
-
-        this.order.setQuota(2);
-        this.order.setQuotaValue(30);
-        assertEquals(Payment.CREDIT, this.order.getPayment(), "failure - Pagamento com parcelas apenas para opção no crédito");
-    }
-
-    @Test
-    public void testNaoPermiteRegistrarPagamentoSemSelecionarFormaDePagamento() {
-        this.order.addProduct(this.listaTeste.get(0));
-        assertNull(this.order.getPayment(), "Falha - Pagamento não deve ser registrado sem selecionar uma forma de pagamento");
-    }
-
-    @Test
-    public void testNaoPermiteParcelasAcimaDeLimite() {
-        this.order.addProduct(this.listaTeste.get(0));
-        this.order.addProduct(this.listaTeste.get(1));
-        this.order.addProduct(this.listaTeste.get(2));
-        this.order.setPayment(Payment.CREDIT);
-        this.order.setQuota(19);
-        this.order.setQuotaValue(50);
-        assertEquals(19, this.order.getQuota(), "Falha - Número de parcelas não deve exceder o limite permitido");
-    }
-
-    @Test
-    public void testValorDaParcelaNegativo() {
-        this.order.addProduct(this.listaTeste.get(0));
-        this.order.addProduct(this.listaTeste.get(1));
-        this.order.addProduct(this.listaTeste.get(2));
-        this.order.setPayment(Payment.CREDIT);
-        this.order.setQuota(10);
-        this.order.setQuotaValue(30);
+    public void testEditProduct() {
+        int id = 1;
+        listaTeste = productDB.getInstance().getProductList();
         
-        assertEquals(30, this.order.getQuotaValue(), "Falha - Valor da parcela não pode ser negativo");
+        Product productToUpdate = null;
+        for (Product product : listaTeste) {
+            if (product.getId().equals(id)) {
+                productToUpdate = product;
+                break;
+            }
+        }
+        
+        productToUpdate.setName("Produto Atualizado");  
+        id = (int) (productToUpdate.getId()-1);
+        // Verificar se o produto foi atualizado corretamente
+        assertEquals(productToUpdate, listaTeste.get(id));
+    }*/
+
+    @Test
+    public void testCriacaoDeProduto() {
+        // Simular produto para criação
+        Product productToCreate = new Product();
+        productToCreate.setId(1L);
+        productToCreate.setName("Produto 1");
+        productToCreate.setValue(7.9);
+        
+        assertFalse(productToCreate.getValue() <= 0, "O valor do produto não pode ser negativo ou zero");
+
+        assertNotNull(productToCreate.getId());
+        assertNotNull(productToCreate.getName());
+        assertNotNull(productToCreate.getValue());
+        
+        productDB.getInstance().getProductList().add(productToCreate);
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}   
+    @Test
+    public void testVerificacaoAoDeletarProduto() {
+        int listSize = productDB.getInstance().getProductList().size();
+        assertFalse(productDB.getInstance().getProductList().isEmpty(), "A lista de produtos está vazia");
+
+        assertNotNull(productDB.getInstance().getProductList().get(0), "Produto inválido");
+
+        productDB.getInstance().getProductList().remove(0);
+
+        assertEquals(listSize - 1, productDB.getInstance().getProductList().size(), "O produto não foi removido com êxito");
+    }
+
+    @Test
+    public void testVerificaRetornoAoRequisitarTodosProdutos() {
+        listaTeste = productDB.getInstance().getProductList();
+        assertNotNull(listaTeste, "Lista de produtos é nula");
+        assertFalse(listaTeste.isEmpty(), "A lista de produtos está vazia");
+    }
+
 }
