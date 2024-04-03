@@ -3,7 +3,6 @@ package com.sale.model.resources;
 import com.sale.model.entity.Order;
 import com.sale.model.entity.Payment;
 import com.sale.model.repository.OrderDB;
-import jakarta.inject.Inject;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
@@ -13,14 +12,10 @@ import jakarta.ws.rs.core.Context;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.POST;
-import jakarta.ws.rs.PathParam;
 import java.util.List;
 
 @Path("/order")
 public class OrderREST {
-
-    @Inject
-    private OrderDB orderDB;
 
     @POST
     @Path("/create")
@@ -53,10 +48,9 @@ public class OrderREST {
     @GET
     @Path("")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getById(@PathParam("id") int id, @Context HttpServletRequest request) {
+    public Response getList(@Context HttpServletRequest request) {
         List<Order> orders = OrderDB.getInstance().getOrderList();
 
         return Response.ok(orders).build();
     }
-
 }

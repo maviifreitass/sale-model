@@ -22,9 +22,6 @@ public class Order {
     @JsonProperty("total")
     private String total;
 
-    @JsonProperty("customer")
-    private Customer customer;
-
     @JsonProperty("products")
     private List<Product> products;
 
@@ -52,15 +49,7 @@ public class Order {
     public void setTotal(String total) {
         this.total = total;
     }
-
-    public Customer getCustomer() {
-        return customer;
-    }
-
-    public void setCustomer(Customer customer) {
-        this.customer = customer;
-    }
-
+    
     public List<Product> getProducts() {
         return products;
     }

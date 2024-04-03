@@ -4,9 +4,9 @@ package com.sale.model.tests;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
-import com.sale.model.tests.entity.Order;
-import com.sale.model.tests.entity.Payment;
-import com.sale.model.tests.entity.Product;
+import com.sale.model.entity.Order;
+import com.sale.model.entity.Payment;
+import com.sale.model.entity.Product;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -59,7 +59,7 @@ public class OrderSale {
     }
 
     @Test
-    public void testNaoPermiteRegistrarPagamentoCarrinhoVazio() {
+    public void testNaoPermiteRegistrarPagamentoProdutoVazio() {
         //adding products
         this.order.addProduct(this.listaTeste.get(0));
         //seting payment

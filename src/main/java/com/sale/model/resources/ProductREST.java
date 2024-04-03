@@ -107,7 +107,7 @@ public class ProductREST {
     @GET
     @Path("")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response getById(@PathParam("id") int id, @Context HttpServletRequest request) {
+    public Response getList(@Context HttpServletRequest request) {
         List<Product> productList = productDB.getInstance().getProductList();
         return Response.ok(productList).build();
     }

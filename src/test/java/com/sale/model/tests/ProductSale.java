@@ -4,9 +4,9 @@ package com.sale.model.tests;
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/UnitTests/JUnit5TestClass.java to edit this template
  */
-import com.sale.model.tests.entity.Order;
-import com.sale.model.tests.entity.Product;
-import com.sale.model.tests.entity.ProductDB;
+import com.sale.model.entity.Order;
+import com.sale.model.entity.Product;
+import com.sale.model.repository.ProductDB;
 import java.util.ArrayList;
 import java.util.List;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -60,25 +60,6 @@ public class ProductSale {
     public void setUp() {
         this.order = new Order();
     }
-/*
-    @Test
-    public void testEditProduct() {
-        int id = 1;
-        listaTeste = productDB.getInstance().getProductList();
-        
-        Product productToUpdate = null;
-        for (Product product : listaTeste) {
-            if (product.getId().equals(id)) {
-                productToUpdate = product;
-                break;
-            }
-        }
-        
-        productToUpdate.setName("Produto Atualizado");  
-        id = (int) (productToUpdate.getId()-1);
-        // Verificar se o produto foi atualizado corretamente
-        assertEquals(productToUpdate, listaTeste.get(id));
-    }*/
 
     @Test
     public void testCriacaoDeProduto() {
